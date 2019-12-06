@@ -1,4 +1,4 @@
-input = File.read("1.txt").split("\n").map(&:to_i)
+input = File.read("../inputs/1.txt").split("\n").map(&:to_i)
 
 # 1
 puts input.map { |i| ( i / 3 ) - 2 }.sum

@@ -1,4 +1,4 @@
-program = File.read("5.txt").strip.split(",").map(&:to_i)
+program = File.read("../inputs/5.txt").strip.split(",").map(&:to_i)
 
 # OPCODE 1: if your Intcode computer encounters 1,10,20,30, it should read the
 # values at positions 10 and 20, add those values, and then overwrite the

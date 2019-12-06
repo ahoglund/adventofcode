@@ -1,4 +1,4 @@
-input = File.read("2.txt").split(",").map(&:to_i)
+input = File.read("../inputs/2.txt").split(",").map(&:to_i)
 #
 #memory = "1,9,10,3,2,3,11,0,99,30,40,50".split(",").map(&:to_i)
 

@@ -1,4 +1,4 @@
-input = File.read("3.txt").split("\n").map { |i| i.split(",") }
+input = File.read("../inputs/3.txt").split("\n").map { |i| i.split(",") }
 
 def get_coords(directions)
   coords = Hash.new

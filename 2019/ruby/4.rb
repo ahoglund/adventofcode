@@ -57,7 +57,6 @@ end
 passes = 0
 
 (284639..748759).each do |i|
-#[112233, 123444, 111122].each do |i|
   next unless repeating_digits?(i)
   next if multi_repeating_digits?(i)
   next unless desc_digits?(i)
