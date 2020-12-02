@@ -21,5 +21,25 @@ RSpec.describe Adventofcode do
       result = Adventofcode.part_two("2020", "1")
       expect(result).to eq 82660352
     end
+
+    it "day two part one" do
+      # example
+      input = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]
+      result = Adventofcode.part_one("2020", "2", input)
+      expect(result).to eq 2
+
+      # real
+      result = Adventofcode.part_one("2020", "2")
+      expect(result).to eq 666
+    end
+
+    it "day two part two" do
+      input = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]
+      result = Adventofcode.part_two("2020", "2", input)
+      expect(result).to eq 1
+
+      result = Adventofcode.part_two("2020", "2")
+      expect(result).to eq 670
+    end
   end
 end
