@@ -21,6 +21,35 @@ RSpec.describe Adventofcode do
     end
   end
 
+  context "2016" do
+    it "day one part one" do
+      input = %w(R2 L3)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 5
+
+      input = %w(R2 R2 R2)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 2
+
+      input = %w(R2 R4 L2 R2)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 10
+
+      input = %w(R5 L5 R5 R3)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 12
+
+      result = Adventofcode.part_one("2016", "1")
+      expect(result).to eq 161
+    end
+
+    it "day one part two" do
+      input = %w(R8 R4 R4 R8)
+      result = Adventofcode.part_two("2016", "1", input)
+      expect(result).to eq 4
+    end
+  end
+
   context "2020" do
     it "day one part one" do
       # example
