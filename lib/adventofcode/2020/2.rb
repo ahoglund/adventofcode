@@ -41,8 +41,8 @@ module Adventofcode
           high       = match_data[2].to_i
           letter     = match_data[3]
           password   = match_data[4]
+          count      = 0
 
-          count = 0
           if password[low - 1] == letter
             count += 1
           end
@@ -51,9 +51,7 @@ module Adventofcode
             count += 1
           end
 
-          if count == 1
-            valid_passwords += 1
-          end
+          valid_passwords += 1 if count == 1
         end
 
         valid_passwords
