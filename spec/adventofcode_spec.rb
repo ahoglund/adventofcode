@@ -9,6 +9,16 @@ RSpec.describe Adventofcode do
       result = Adventofcode.part_two("2015", "1")
       expect(result).to eq 1795
     end
+
+    it "day two part one" do
+      result = Adventofcode.part_one("2015", "2")
+      expect(result).to eq 1588178
+    end
+
+    it "day two part two" do
+      result = Adventofcode.part_two("2015", "2")
+      expect(result).to eq 3783758
+    end
   end
 
   context "2020" do
