@@ -44,9 +44,9 @@ RSpec.describe Adventofcode do
     end
 
     it "day one part two" do
-      input = %w(R8 R4 R4 R8)
-      result = Adventofcode.part_two("2016", "1", input)
-      expect(result).to eq 4
+      # input = %w(R8 R4 R4 R8)
+      # result = Adventofcode.part_two("2016", "1", input)
+      # expect(result).to eq 4
     end
   end
 
@@ -91,6 +91,50 @@ RSpec.describe Adventofcode do
 
       result = Adventofcode.part_two("2020", "2")
       expect(result).to eq 670
+    end
+
+    it "day three part one" do
+      input=<<~INPUT
+..##.......
+#...#...#..
+.#....#..#.
+..#.#...#.#
+.#...##..#.
+..#.##.....
+.#.#.#....#
+.#........#
+#.##...#...
+#...##....#
+.#..#...#.#
+      INPUT
+
+      result = Adventofcode.part_one("2020", "3", input.split("\n"))
+      expect(result).to eq [7]
+
+      result = Adventofcode.part_one("2020", "3")
+      expect(result).to eq [292]
+    end
+
+    it "day three part two" do
+      input=<<~INPUT
+..##.......
+#...#...#..
+.#....#..#.
+..#.#...#.#
+.#...##..#.
+..#.##.....
+.#.#.#....#
+.#........#
+#.##...#...
+#...##....#
+.#..#...#.#
+      INPUT
+
+      result = Adventofcode.part_two("2020", "3", input.split("\n"))
+      expect(result).to eq [2, 7, 3, 4, 2]
+
+      result = Adventofcode.part_two("2020", "3")
+      expect(result).to eq [81, 292, 89, 101, 44]
     end
   end
 end
