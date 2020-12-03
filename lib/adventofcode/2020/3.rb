@@ -8,12 +8,6 @@ module Adventofcode
         raw_input.split("\n")
       end
 
-      def map
-        input.each_with_object([]) do |line, map|
-          map << line * input.length
-        end
-      end
-
       def part_one
         slopes = [[3,1]]
         calculate(slopes)
@@ -34,9 +28,9 @@ module Adventofcode
         slopes.map do |check|
           pos       = 0
           hit_trees = 0
-          (check[1]..(map.length - 1)).step(check[1]) do |index|
-            pos += check[0]
-            hit_trees += 1 if map[index][pos] == "#"
+          (check[1]..(input.length - 1)).step(check[1]) do |index|
+            pos = (pos + check[0]) % input[index].length
+            hit_trees += 1 if input[index][pos] == "#"
           end
           hit_trees
         end.reduce(&:*)
