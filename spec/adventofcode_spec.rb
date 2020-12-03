@@ -44,9 +44,9 @@ RSpec.describe Adventofcode do
     end
 
     it "day one part two" do
-      # input = %w(R8 R4 R4 R8)
-      # result = Adventofcode.part_two("2016", "1", input)
-      # expect(result).to eq 4
+      input = %w(R8 R4 R4 R8)
+      result = Adventofcode.part_two("2016", "1", input)
+      expect(result).to eq 4
     end
   end
 
