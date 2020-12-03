@@ -32,9 +32,9 @@ module Adventofcode
       end
 
       def calc(checks)
-        tree_totals = []
+        tree_totals = 1
         checks.each do |check|
-          pos  = 0
+          pos       = 0
           hit_trees = 0
           (check[1]..(map.length - 1)).step(check[1]) do |index|
             pos += check[0]
@@ -42,7 +42,7 @@ module Adventofcode
               hit_trees += 1
             end
           end
-          tree_totals << hit_trees
+          tree_totals *= hit_trees
         end
 
         tree_totals

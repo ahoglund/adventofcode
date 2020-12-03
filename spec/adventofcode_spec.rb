@@ -109,10 +109,10 @@ RSpec.describe Adventofcode do
       INPUT
 
       result = Adventofcode.part_one("2020", "3", input.split("\n"))
-      expect(result).to eq [7]
+      expect(result).to eq 7
 
       result = Adventofcode.part_one("2020", "3")
-      expect(result).to eq [292]
+      expect(result).to eq 292
     end
 
     it "day three part two" do
@@ -131,10 +131,10 @@ RSpec.describe Adventofcode do
       INPUT
 
       result = Adventofcode.part_two("2020", "3", input.split("\n"))
-      expect(result).to eq [2, 7, 3, 4, 2]
+      expect(result).to eq 336
 
       result = Adventofcode.part_two("2020", "3")
-      expect(result).to eq [81, 292, 89, 101, 44]
+      expect(result).to eq 9354744432
     end
   end
 end
