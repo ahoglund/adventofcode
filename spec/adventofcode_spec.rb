@@ -197,5 +197,19 @@ INPUT
       result = Adventofcode.part_two("2020", "4")
       expect(result).to eq 140
     end
+
+    it "day five part one" do
+      input = ["FBFBBFFRLR".split("")]
+      result = Adventofcode.part_one("2020", "5", input)
+      expect(result).to eq 357
+
+      result = Adventofcode.part_one("2020", "5")
+      expect(result).to eq 828
+    end
+
+    it "day five part one" do
+      result = Adventofcode.part_two("2020", "5")
+      expect(result).to eq 565
+    end
   end
 end
