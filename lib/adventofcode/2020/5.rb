@@ -32,11 +32,7 @@ module Adventofcode
       end
 
       def part_two
-        (1..seat_ids.length - 1).each do |i|
-          if (seat_ids[i] - seat_ids[i - 1]) > 1
-            return seat_ids[i] - 1
-          end
-        end
+        ((seat_ids[0]..seat_ids[-1]).to_a - seat_ids).first
       end
     end
   end

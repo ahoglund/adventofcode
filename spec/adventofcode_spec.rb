@@ -207,7 +207,7 @@ INPUT
       expect(result).to eq 828
     end
 
-    it "day five part one" do
+    it "day five part two" do
       result = Adventofcode.part_two("2020", "5")
       expect(result).to eq 565
     end
