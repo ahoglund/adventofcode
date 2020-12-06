@@ -11,12 +11,11 @@ module Adventofcode
       end
 
       def poles
-        ["R", "U", "L", "D"]
+        ["R", "L"]
       end
 
       def part_one
-        coords = Manhattan.new(input, poles).visited_coords.last
-        binding.pry
+        coords = Manhattan.new(input, poles).visit_with_facing.last
         coords.map { |x, y| x.abs + y.abs }.min
       end
 

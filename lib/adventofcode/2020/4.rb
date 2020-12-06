@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require_relative '../helpers'
+
 module Adventofcode
   module Year2020
     class Day4 < Adventofcode::Day
+
+      include Adventofcode::Helpers
 
       REQUIRED_FIELDS = {
         "byr" => ->(field) { (1920..2002).cover?(field.to_i) },
@@ -28,20 +32,7 @@ module Adventofcode
       end
 
       def passport_data
-        passport_num    = 1
-        passport_data   = {}
-
-        input.each do |line|
-          if line == ""
-            passport_num += 1
-            next
-          else
-            passport_data[passport_num] ||= []
-            passport_data[passport_num] << line
-          end
-        end
-
-        passport_data
+        split_input_with_blank_line_delimeters(input)
       end
 
       def part_one

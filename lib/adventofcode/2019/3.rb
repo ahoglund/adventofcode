@@ -23,6 +23,7 @@ module Adventofcode
 
       def part_one
         matches = (wire_1_coords.map(&:value) & wire_2_coords.map(&:value))
+        binding.pry
         matches.map { |x, y| x.abs + y.abs }.min
       end
 
