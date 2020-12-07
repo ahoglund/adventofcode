@@ -230,13 +230,13 @@ a
 
 b
       INPUT
-      result = Adventofcode.part_one("2020", "6", input.split("\n"))
+      result = Adventofcode.part_one("2020", "6", input.split("\n\n"))
       expect(result).to eq 11
 
       result = Adventofcode.part_one("2020", "6")
       expect(result).to eq 6416
 
-      result = Adventofcode.part_two("2020", "6", input.split("\n"))
+      result = Adventofcode.part_two("2020", "6", input.split("\n\n"))
       expect(result).to eq 6
 
       result = Adventofcode.part_two("2020", "6")

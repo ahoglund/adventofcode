@@ -9,24 +9,22 @@ module Adventofcode
       include Adventofcode::Helpers
 
       def default_input
-        raw_input.split("\n")
+        raw_input.split("\n\n")
       end
 
       def part_one
-        data = split_input_with_blank_line_delimeters(input)
-        data.reduce(0) do |acc, datum|
-          acc += datum.map { |d| d.split("") }.flatten.uniq.length
+        input.reduce(0) do |acc, datum|
+          acc += datum.split("\n").map { |d| d.split("") }.flatten.uniq.length
         end
       end
 
       def part_two
-        data = split_input_with_blank_line_delimeters(input)
-
-        data.reduce(0) do |acc, answers|
-          all = answers.first.split("")
+        input.reduce(0) do |acc, group|
+          answers = group.split("\n")
+          all     = answers.first.split("")
 
           answers[1..-1].each do |answer|
-            all = all.intersection(answer.split(""))
+            all = all & answer.split("")
           end
 
           acc += all.length
