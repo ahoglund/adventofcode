@@ -27,26 +27,28 @@ RSpec.describe Adventofcode do
       result = Adventofcode.part_one("2016", "1", input)
       expect(result).to eq 5
 
-      # input = %w(R2 R2 R2)
-      # result = Adventofcode.part_one("2016", "1", input)
-      # expect(result).to eq 2
+      input = %w(R2 R2 R2)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 2
 
-      # input = %w(R2 R4 L2 R2)
-      # result = Adventofcode.part_one("2016", "1", input)
-      # expect(result).to eq 10
+      input = %w(R2 R4 L2 R2)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 2
 
-      # input = %w(R5 L5 R5 R3)
-      # result = Adventofcode.part_one("2016", "1", input)
-      # expect(result).to eq 12
+      input = %w(R5 L5 R5 R3)
+      result = Adventofcode.part_one("2016", "1", input)
+      expect(result).to eq 12
 
-      # result = Adventofcode.part_one("2016", "1")
-      # expect(result).to eq 161
+      result = Adventofcode.part_one("2016", "1")
+      expect(result).to eq 161
     end
 
     it "day one part two" do
       input = %w(R8 R4 R4 R8)
       result = Adventofcode.part_two("2016", "1", input)
       expect(result).to eq 4
+      result = Adventofcode.part_two("2016", "1")
+      expect(result).to eq 110
     end
   end
 
@@ -169,7 +171,7 @@ ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 INPUT
 
-      result = Adventofcode.part_one("2020", "4", input.split("\n"))
+      result = Adventofcode.part_one("2020", "4", input.split("\n\n"))
       expect(result).to eq 3
 
       result = Adventofcode.part_one("2020", "4")
@@ -191,7 +193,7 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719
 eyr:2029 hgt:151cm ecl:brn byr:2001 iyr:2019 pid:193029393 hcl:#d1614a cid:kd
 INPUT
 
-      result = Adventofcode.part_two("2020", "4", input.split("\n"))
+      result = Adventofcode.part_two("2020", "4", input.split("\n\n"))
       expect(result).to eq 5
 
       result = Adventofcode.part_two("2020", "4")
@@ -320,61 +322,11 @@ INPUT
     end
 
     it "day nine part one" do
-      input=<<~INPUT
-35
-20
-15
-25
-47
-40
-62
-55
-65
-95
-102
-117
-150
-182
-127
-219
-299
-277
-309
-576
-INPUT
-      # result = Adventofcode.part_one("2020", "9", input.split("\n").map(&:to_i))
-      # expect(result).to eq 127
-
       result = Adventofcode.part_one("2020", "9")
       expect(result).to eq 1930745883
     end
 
     it "day nine part two" do
-      input=<<~INPUT
-35
-20
-15
-25
-47
-40
-62
-55
-65
-95
-102
-117
-150
-182
-127
-219
-299
-277
-309
-576
-INPUT
-      # result = Adventofcode.part_two("2020", "9", input.split("\n").map(&:to_i))
-      # expect(result).to eq 62
-
       result = Adventofcode.part_two("2020", "9")
       expect(result).to eq 268878261
     end

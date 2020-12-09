@@ -15,12 +15,18 @@ module Adventofcode
       end
 
       def part_one
-        coords = Manhattan.new(input, poles).visit_with_facing.last
-        coords.map { |x, y| x.abs + y.abs }.min
+        coords = Manhattan.new(input, poles).visit
+        ((coords.first.first - coords.last.first) + (coords.first.last - coords.last.last)).abs
       end
 
 
       def part_two
+        coords = Manhattan.new(input, poles).visit
+        seen = []
+        coords.each do |coord|
+          return ((coords.first.first - coord.first) + (coords.first.last - coord.last)).abs if seen.include?(coord)
+          seen << coord
+        end
       end
     end
   end

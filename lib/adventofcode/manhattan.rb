@@ -9,67 +9,69 @@ class Manhattan
     @all_coords = []
   end
 
-  def visit_with_facing
+  def visit
     facing  = "N"
-    c       = 0
     x_coord = 0
     y_coord = 0
+    all_coords << [x_coord, y_coord]
     directions.each do |x|
       direction = x[0]
       steps = x[1..-1]
       if direction == "R" && facing == "N"
-        facing == "E"
+        facing = "E"
         steps.to_i.times.each do
           x_coord += 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "R" && facing == "E"
         facing = "S"
         steps.to_i.times.each do
           y_coord -= 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "R" && facing == "S"
         facing = "W"
         steps.to_i.times.each do
           x_coord -= 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "R" && facing == "W"
         facing = "N"
         steps.to_i.times.each do
           y_coord += 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "L" && facing == "N"
         facing = "W"
         steps.to_i.times.each do
           x_coord -= 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "L" && facing == "W"
         facing = "S"
         steps.to_i.times.each do
           y_coord -= 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "L" && facing == "S"
         facing = "E"
         steps.to_i.times.each do
           x_coord += 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       elsif direction == "L" && facing == "E"
         facing = "N"
         steps.to_i.times.each do
           y_coord += 1
-          all_coords << Coord.new(x_coord, y_coord, c)
+          all_coords << [x_coord, y_coord]
         end
       end
     end
+
+    all_coords
   end
 
-  def visited_coords
+  def visit2
     c       = 0
     x_coord = 0
     y_coord = 0

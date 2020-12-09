@@ -14,16 +14,15 @@ module Adventofcode
       end
 
       def wire_1_coords
-        @wire_1_coords ||= Manhattan.new(input.first, poles).visited_coords
+        @wire_1_coords ||= Manhattan.new(input.first, poles).visit2
       end
 
       def wire_2_coords
-        @wire_2_coords ||= Manhattan.new(input.last, poles).visited_coords
+        @wire_2_coords ||= Manhattan.new(input.last, poles).visit2
       end
 
       def part_one
         matches = (wire_1_coords.map(&:value) & wire_2_coords.map(&:value))
-        binding.pry
         matches.map { |x, y| x.abs + y.abs }.min
       end
 

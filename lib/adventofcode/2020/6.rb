@@ -6,8 +6,6 @@ module Adventofcode
   module Year2020
     class Day6 < Adventofcode::Day
 
-      include Adventofcode::Helpers
-
       def default_input
         raw_input.split("\n\n")
       end
