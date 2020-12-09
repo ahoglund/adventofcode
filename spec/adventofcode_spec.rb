@@ -279,6 +279,45 @@ INPUT
       result = Adventofcode.part_two("2020", "7")
       expect(result).to eq 14177
     end
+
+    it "day eight part one" do
+      input=<<~INPUT
+nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6
+INPUT
+
+      result = Adventofcode.part_one("2020", "8", input.split("\n"))
+      expect(result).to eq 5
+
+      result = Adventofcode.part_one("2020", "8")
+      expect(result).to eq 1859
+    end
+
+    it "day eight part two" do
+      input=<<~INPUT
+nop +0
+acc +1
+jmp +4
+acc +3
+jmp -3
+acc -99
+acc +1
+jmp -4
+acc +6
+INPUT
+      result = Adventofcode.part_two("2020", "8", input.split("\n"))
+      expect(result).to eq 8
+
+      result = Adventofcode.part_two("2020", "8")
+      expect(result).to eq 1235
+    end
   end
 end
 
