@@ -318,6 +318,66 @@ INPUT
       result = Adventofcode.part_two("2020", "8")
       expect(result).to eq 1235
     end
+
+    it "day nine part one" do
+      input=<<~INPUT
+35
+20
+15
+25
+47
+40
+62
+55
+65
+95
+102
+117
+150
+182
+127
+219
+299
+277
+309
+576
+INPUT
+      # result = Adventofcode.part_one("2020", "9", input.split("\n").map(&:to_i))
+      # expect(result).to eq 127
+
+      result = Adventofcode.part_one("2020", "9")
+      expect(result).to eq 1930745883
+    end
+
+    it "day nine part two" do
+      input=<<~INPUT
+35
+20
+15
+25
+47
+40
+62
+55
+65
+95
+102
+117
+150
+182
+127
+219
+299
+277
+309
+576
+INPUT
+      # result = Adventofcode.part_two("2020", "9", input.split("\n").map(&:to_i))
+      # expect(result).to eq 62
+
+      result = Adventofcode.part_two("2020", "9")
+      expect(result).to eq 268878261
+    end
   end
 end
 
