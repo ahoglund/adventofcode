@@ -327,7 +327,10 @@ INPUT
     end
 
     it "day nine part two" do
+      time = Time.new
       result = Adventofcode.part_two("2020", "9")
+      runtime = Time.new - time
+      puts runtime
       expect(result).to eq 268878261
     end
   end

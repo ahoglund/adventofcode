@@ -21,6 +21,8 @@ module Adventofcode
 
         while x < input.length do
           while i < input.length do
+            # skip the remaining once we've gone past our target
+            break if input[x..i].sum > number
             return (input[x..i].max + input[x..i].min) if input[x..i].sum == number
             i += 1
           end
