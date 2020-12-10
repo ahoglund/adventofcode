@@ -37,3 +37,5 @@ adventofcode-*.tar
 # rspec failure tracking
 .rspec_status
 
+# custom
+session_cookie.txt

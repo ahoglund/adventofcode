@@ -333,6 +333,10 @@ INPUT
       puts runtime
       expect(result).to eq 268878261
     end
+
+    it "day ten part one" do
+
+    end
   end
 end
 
