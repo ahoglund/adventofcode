@@ -52,6 +52,21 @@ RSpec.describe Adventofcode do
     end
   end
 
+  context "2017" do
+    it "day one part one" do
+      input = [1122]
+      result = Adventofcode.part_one("2017", "1", input)
+      expect(result).to eq 3
+
+      input = [91212129]
+      result = Adventofcode.part_one("2017", "1", input)
+      expect(result).to eq 9
+
+      result = Adventofcode.part_one("2017", "1")
+      expect(result).to eq 4
+    end
+  end
+
   context "2019" do
     it "day three part one" do
       result = Adventofcode.part_one("2019", "3")
@@ -335,7 +350,45 @@ INPUT
     end
 
     it "day ten part one" do
+      input=<<~INPUT
+16
+10
+15
+5
+1
+11
+7
+19
+6
+12
+4
+INPUT
+      result = Adventofcode.part_one("2020", "10", input.split("\n").map(&:to_i))
+      expect(result).to eq 7 * 5
 
+      result = Adventofcode.part_one("2020", "10")
+      expect(result).to eq 2070
+    end
+
+    it "day ten part two" do
+      input=<<~INPUT
+16
+10
+15
+5
+1
+11
+7
+19
+6
+12
+4
+INPUT
+      result = Adventofcode.part_two("2020", "10", input.split("\n").map(&:to_i))
+      expect(result).to eq 8
+
+      result = Adventofcode.part_two("2020", "10")
+      expect(result).to eq 24179327893504
     end
   end
 end

@@ -1,7 +1,12 @@
 #!/bin/bash
 
-YEAR=$(date +%Y)
-DAY=$(TZ=UTC date +%-d)
+if [[ $1 == "" ]]; then
+  YEAR=$(date +%Y)
+  DAY=$(TZ=UTC date +%-d)
+else
+  YEAR=$1
+  DAY=$2
+fi
 
 # Get input
 ./script/get-input.sh $YEAR $DAY
