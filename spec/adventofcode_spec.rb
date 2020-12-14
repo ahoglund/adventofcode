@@ -390,6 +390,59 @@ INPUT
       result = Adventofcode.part_two("2020", "10")
       expect(result).to eq 24179327893504
     end
+
+    it "day eleven part one" do
+      input=<<~INPUT
+L.LL.LL.LL
+LLLLLLL.LL
+L.L.L..L..
+LLLL.LL.LL
+L.LL.LL.LL
+L.LLLLL.LL
+..L.L.....
+LLLLLLLLLL
+L.LLLLLL.L
+L.LLLLL.LL
+INPUT
+
+      result = Adventofcode.part_one("2020", "11", input.split("\n").map { |l| l.split("") })
+
+      expect(result).to eq 37
+
+      result = Adventofcode.part_one("2020", "11")
+
+      expect(result).to eq 2275
+    end
+
+    it "day eleven part two" do
+      input=<<~INPUT
+L.LL.LL.LL
+LLLLLLL.LL
+L.L.L..L..
+LLLL.LL.LL
+L.LL.LL.LL
+L.LLLLL.LL
+..L.L.....
+LLLLLLLLLL
+L.LLLLLL.L
+L.LLLLL.LL
+INPUT
+
+      result = Adventofcode.part_two("2020", "11", input.split("\n").map { |l| l.split("") })
+
+      expect(result).to eq 26
+
+      result = Adventofcode.part_two("2020", "11")
+      expect(result).to eq 2121
+
+    end
+
+    it "day 12 part one" do
+      input = ["F10", "N3", "F7", "R90", "F11"]
+      result = Adventofcode.part_one("2020", "12", input)
+      expect(result).to eq 25
+
+    end
   end
 end
 

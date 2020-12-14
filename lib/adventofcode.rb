@@ -1,4 +1,4 @@
-require "adventofcode/version"
+#require "adventofcode/version"
 require 'pry'
 
 module Adventofcode
