@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "adventofcode"
+require_relative "../lib/adventofcode/manhattan"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

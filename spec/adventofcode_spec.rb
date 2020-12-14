@@ -437,11 +437,98 @@ INPUT
 
     end
 
+    it "Manhattan#rotate" do
+      man = Manhattan.new([], "N")
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "W"
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "S"
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "E"
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "N"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "E"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "S"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "W"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "N"
+
+      man.rotate("R", "180")
+      expect(man.facing).to eq "S"
+
+      man.rotate("R", "180")
+      expect(man.facing).to eq "N"
+
+      man.rotate("L", "180")
+      expect(man.facing).to eq "S"
+
+      man.rotate("L", "180")
+      expect(man.facing).to eq "N"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "E"
+
+      man.rotate("L", "180")
+      expect(man.facing).to eq "W"
+
+      man.rotate("R", "180")
+      expect(man.facing).to eq "E"
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "N"
+
+      man.rotate("L", "270")
+      expect(man.facing).to eq "E"
+
+      man.rotate("L", "270")
+      expect(man.facing).to eq "S"
+
+      man.rotate("L", "270")
+      expect(man.facing).to eq "W"
+
+      man.rotate("R", "90")
+      expect(man.facing).to eq "N"
+
+      man.rotate("R", "270")
+      expect(man.facing).to eq "W"
+
+      man.rotate("R", "270")
+      expect(man.facing).to eq "S"
+
+      man.rotate("R", "270")
+      expect(man.facing).to eq "E"
+
+      man.rotate("L", "90")
+      expect(man.facing).to eq "N"
+    end
+
     it "day 12 part one" do
       input = ["F10", "N3", "F7", "R90", "F11"]
       result = Adventofcode.part_one("2020", "12", input)
       expect(result).to eq 25
 
+      result = Adventofcode.part_one("2020", "12")
+      expect(result).to eq 904
+    end
+
+    it "day 12 part two" do
+      input = ["F10", "N3", "F7", "R90", "F11"]
+      result = Adventofcode.part_two("2020", "12", input)
+      expect(result).to eq 286
+
+      # result = Adventofcode.part_one("2020", "12")
+      # expect(result).to eq 904
     end
   end
 end

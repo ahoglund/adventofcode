@@ -14,11 +14,11 @@ module Adventofcode
       end
 
       def wire_1_coords
-        @wire_1_coords ||= Manhattan.new(input.first, poles).visit2
+        @wire_1_coords ||= Manhattan.new(input.first).visit2(poles)
       end
 
       def wire_2_coords
-        @wire_2_coords ||= Manhattan.new(input.last, poles).visit2
+        @wire_2_coords ||= Manhattan.new(input.last).visit2(poles)
       end
 
       def part_one
