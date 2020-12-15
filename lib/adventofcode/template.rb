@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Adventofcode
-  module Year2020
+  module YearN
     class DayN < Adventofcode::Day
       def part_one
       end

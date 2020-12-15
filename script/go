@@ -19,7 +19,13 @@ fi
 # Copy template in place
 cp lib/adventofcode/template.rb lib/adventofcode/$YEAR/$DAY.rb
 sed -i "" "s/DayN/Day$DAY/g" lib/adventofcode/$YEAR/$DAY.rb
+sed -i "" "s/YearN/Year$YEAR/g" lib/adventofcode/$YEAR/$DAY.rb
+
+# Copy spec in place
+cp lib/adventofcode/spec_template.rb spec/adventofcode_${YEAR}_${DAY}_spec.rb
+sed -i "" "s/YEAR/$YEAR/g" spec/adventofcode_${YEAR}_${DAY}_spec.rb
+sed -i "" "s/DAY/$DAY/g" spec/adventofcode_${YEAR}_${DAY}_spec.rb
 
 # go!
 open https://adventofcode.com/$YEAR/day/$DAY
-vim lib/adventofcode/$YEAR/$DAY.rb spec/adventofcode_spec.rb
+vim lib/adventofcode/$YEAR/$DAY.rb spec/adventofcode_${YEAR}_${DAY}_spec.rb
