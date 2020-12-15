@@ -15,9 +15,17 @@ INPUT
     end
 
     it "part two" do
-      input = []
-      result = Adventofcode.part_two("2020", "14", input)
+      input=<<~INPUT
+mask = 000000000000000000000000000000X1001X
+mem[42] = 100
+mask = 00000000000000000000000000000000X0XX
+mem[26] = 1
+INPUT
+      result = Adventofcode.part_two("2020", "14", input.split("\n"))
       expect(result).to eq 208
+
+      result = Adventofcode.part_two("2020", "14")
+      expect(result).to eq 4254673508445
     end
   end
 end
