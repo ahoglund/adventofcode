@@ -15,7 +15,7 @@ module Adventofcode
       end
 
       def part_two
-        coords = Manhattan.new(input, "E", [10,1]).visit4
+        coords = Manhattan.new(input, "E", ["E10", "N1"]).visit4
         coords.last.first.abs + coords.last.last.abs
       end
     end

@@ -523,14 +523,23 @@ INPUT
     end
 
     it "day 12 part two" do
-      input = ["F10", "N3", "F7", "R90", "F11"]
+      input = ["F10"]#, "N3", "F7", "R90", "F11"]
       result = Adventofcode.part_two("2020", "12", input)
       expect(result).to eq 286
 
       # result = Adventofcode.part_one("2020", "12")
       # expect(result).to eq 904
     end
-  end
+
+    it "day 13 part one" do
+      input = "939\n7,13,x,x,59,x,31,19"
+      result = Adventofcode.part_one("2020", "13", input.split("\n"))
+      expect(result).to eq 295
+
+      result = Adventofcode.part_one("2020", "13")
+      expect(result).to eq 4808
+    end
+   end
 end
 
 

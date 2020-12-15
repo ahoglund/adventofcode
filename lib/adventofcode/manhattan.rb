@@ -3,35 +3,33 @@
 class Manhattan
   attr_accessor :directions, :all_coords, :facing, :waypoint
 
-  def initialize(directions, initial_facing = "N", waypoint = [0,0])
+  def initialize(directions, initial_facing = "N", waypoints = ["N0", "N0"])
     @directions = directions
     @all_coords = []
     @facing     = initial_facing
-    @waypoint_x = waypoint[0]
-    @waypoint_y = waypoint[1]
-    @waypoint   = waypoint
+    @waypoints  = parse_waypoints(waypoints)
   end
 
   DIRECTIONS = %w(N E S W).freeze
 
   def move(steps, x_coord, y_coord)
     if @facing == "N"
-      steps.to_i.times.each do
+      steps.times.each do
         y_coord += 1
         all_coords << [x_coord, y_coord]
       end
     elsif @facing == "E"
-      steps.to_i.times.each do
+      steps.times.each do
         x_coord += 1
         all_coords << [x_coord, y_coord]
       end
     elsif @facing == "S"
-      steps.to_i.times.each do
+      steps.times.each do
         y_coord -= 1
         all_coords << [x_coord, y_coord]
       end
     elsif @facing == "W"
-      steps.to_i.times.each do
+      steps.times.each do
         x_coord -= 1
         all_coords << [x_coord, y_coord]
       end
@@ -43,21 +41,38 @@ class Manhattan
   def rotate(direction, degrees)
     if direction == "L"
       if degrees == "90"
-        @facing = DIRECTIONS[DIRECTIONS.index(@facing) - 1]
+        face(DIRECTIONS[DIRECTIONS.index(@facing) - 1])
       elsif degrees == "180"
-        @facing = DIRECTIONS[DIRECTIONS.index(@facing) - 2]
+        face(DIRECTIONS[DIRECTIONS.index(@facing) - 2])
       elsif degrees == "270"
-        @facing = DIRECTIONS[DIRECTIONS.index(@facing) - 3]
+        face(DIRECTIONS[DIRECTIONS.index(@facing) - 3])
       end
     elsif direction == "R"
       if degrees == "90"
-        @facing = DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 1)) % DIRECTIONS.length]
+        face(DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 1)) % DIRECTIONS.length])
       elsif degrees == "180"
-        @facing = DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 2)) % DIRECTIONS.length]
+        face(DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 2)) % DIRECTIONS.length])
       elsif degrees == "270"
-        @facing = DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 3)) % DIRECTIONS.length]
+        face(DIRECTIONS[(DIRECTIONS.index(@facing) + (DIRECTIONS.length + 3)) % DIRECTIONS.length])
       end
     end
+  end
+
+  class Waypoint
+    attr_reader :direction, :steps
+    def initialize(direction, steps)
+      @direction, @steps = direction, steps
+    end
+  end
+
+  def parse_waypoints(raw_waypoints)
+    raw_waypoints.map do |waypoint|
+      Waypoint.new(waypoint[0], waypoint[1..-1].to_i)
+    end
+  end
+
+  def face(direction)
+    @facing = direction
   end
 
   def visit4
@@ -66,10 +81,14 @@ class Manhattan
     all_coords << [x_coord, y_coord]
     directions.each do |x|
       command = x[0]
-      sub_command = x[1..-1]
+      sub_command = x[1..-1].to_i
       if command == "F"
+        sub_command.times do
+          @waypoints.each do |waypoint|
+            x_coord, y_coord = move(waypoint.steps, x_coord, y_coord)
+          end
+        end
         binding.pry
-        x_coord, y_coord = move(sub_command, x_coord * @waypoint_x, y_coord * @waypoint_y)
         @waypoint = [x_coord + @waypoint_x, y_coord + @waypoint_y]
       elsif DIRECTIONS.include?(command)
         prev_facing = @facing
