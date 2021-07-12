@@ -3,7 +3,7 @@ defmodule AdventofcodeTest do
   doctest Adventofcode
 
   test "2020 day one part one" do
-#    assert Adventofcode.y2020d1() == 181044
+    assert Adventofcode.y2020d1() == 181044
   end
 
   test "2017 day one part one" do
