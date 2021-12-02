@@ -1,48 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"io/ioutil"
-	"os"
-	"strconv"
-	"strings"
-)
-
-func removeEmpty(s []string) []string {
-	var r []string
-	for _, str := range s {
-		if str != "" {
-			r = append(r, str)
-		}
-	}
-	return r
-}
-
-func GetInput(filename string) []int {
-	cwd, _ := os.Getwd()
-
-	content, err := ioutil.ReadFile(cwd + filename)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	// split content into a slice of strings
-	lines := strings.Split(string(content), "\n")
-
-	// remove empty strings
-	lines = removeEmpty(lines)
-
-	// convert slice of strings to slice of ints
-	var ints []int
-	for _, line := range lines {
-		i, _ := strconv.Atoi(line)
-		ints = append(ints, i)
-	}
-
-	return ints
-}
-
-func PartOne(input []int) int {
+func DayOnePartOne(input []int) int {
 	// find all the times a number increases from the previous number
 	// and add them to a slice
 	increases := 0
@@ -55,7 +13,7 @@ func PartOne(input []int) int {
 	return increases
 }
 
-func PartTwo(input []int) int {
+func DayOnePartTwo(input []int) int {
 	// find all the increases where the measurement window
 	// is a sliding scale of 3 numbers
 	// and add them to a slice
@@ -77,14 +35,4 @@ func PartTwo(input []int) int {
 	}
 
 	return increases
-}
-
-func main() {
-	test_filename := "/lib/adventofcode/2021/inputs/1_test.txt"
-	filename := "/lib/adventofcode/2021/inputs/1.txt"
-	input := GetInput(filename)
-	test_input := GetInput(test_filename)
-	fmt.Println(PartOne(input))
-	fmt.Println(PartTwo(input))
-	fmt.Println(PartTwo(test_input))
 }
