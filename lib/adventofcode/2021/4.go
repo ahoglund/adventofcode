@@ -121,28 +121,27 @@ func WinningBoards(input []string) []Win {
 	return wins
 }
 
-func DayFourPartOne(input []string) int {
-	wins := WinningBoards(input)
-
-	unmarked_cells := FindUnmarkedCells(wins[0].board)
+func TallyCells(cells []Cell) int {
 	sum := 0
-	for _, cell := range unmarked_cells {
+
+	for _, cell := range cells {
 		sum += cell.val
 	}
+
+	return sum
+}
+
+func DayFourPartOne(input []string) int {
+	wins := WinningBoards(input)
+	unmarked_cells := FindUnmarkedCells(wins[0].board)
+	sum := TallyCells(unmarked_cells)
 	return wins[0].draw_int * sum
 }
 
 func DayFourPartTwo(input []string) int {
 	wins := WinningBoards(input)
-	// get last element in wins array
 	last_win := wins[len(wins)-1]
-
 	unmarked_cells := FindUnmarkedCells(last_win.board)
-
-	sum := 0
-	for _, cell := range unmarked_cells {
-		sum += cell.val
-	}
-
+	sum := TallyCells(unmarked_cells)
 	return last_win.draw_int * sum
 }
