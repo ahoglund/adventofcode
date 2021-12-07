@@ -42,12 +42,13 @@ func DaySevenPartTwo(input []string) int {
 				steps = (i - v)
 			}
 
-			stepCost := 0
-			for j := 0; j < steps; j++ {
-				stepCost += j
-			}
+			// stepCost := 0
+			// for j := 0; j < steps; j++ {
+			// 	stepCost += j
+			// }
+			// calculate stepCost using triangular numbers
+			c := steps * (steps + 1) / 2
 
-			c := steps + stepCost
 			fuelCosts[i] += c
 		}
 	}
