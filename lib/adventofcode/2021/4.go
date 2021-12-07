@@ -49,8 +49,6 @@ func CheckBoard(board Board) Board {
 	for i := 0; i < 5; i++ {
 		col_sum := 0
 		row_sum := 0
-		diag_sum := 0
-		diag_sum_rev := 0
 
 		for j := 0; j < 5; j++ {
 			if board.grid[i][j].marked {
@@ -60,17 +58,9 @@ func CheckBoard(board Board) Board {
 			if board.grid[j][i].marked {
 				col_sum += 1
 			}
-
-			if i == j && board.grid[i][j].marked {
-				diag_sum += 1
-			}
-
-			if i+j == 4 && board.grid[i][j].marked {
-				diag_sum_rev += 1
-			}
 		}
 
-		if row_sum == 5 || col_sum == 5 || diag_sum == 5 || diag_sum_rev == 5 {
+		if row_sum == 5 || col_sum == 5 {
 			board.winner = true
 			return board
 		}
