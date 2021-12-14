@@ -8,6 +8,12 @@ import (
 	"strings"
 )
 
+type Point struct {
+	x     int
+	y     int
+	value int
+}
+
 func removeEmpty(s []string) []string {
 	var r []string
 	for _, str := range s {
@@ -96,5 +102,17 @@ func main() {
 		fmt.Println(DaySevenPartOne(GetInput(real_input)))
 		fmt.Println(DaySevenPartTwo(GetInput(sample_input)))
 		fmt.Println(DaySevenPartTwo(GetInput(real_input)))
+	case "8":
+		fmt.Println("Day 8")
+		fmt.Println(DayEightPartOne(GetInput(sample_input)))
+		fmt.Println(DayEightPartOne(GetInput(real_input)))
+		fmt.Println(DayEightPartTwo(GetInput(sample_input)))
+		// fmt.Println(DayEightPartTwo(GetInput(real_input)))
+	case "9":
+		fmt.Println("Day 9")
+		fmt.Println(DayNinePartOne(GetInput(sample_input)))
+		fmt.Println(DayNinePartOne(GetInput(real_input)))
+		fmt.Println(DayNinePartTwo(GetInput(sample_input)))
+		fmt.Println(DayNinePartTwo(GetInput(real_input)))
 	}
 }

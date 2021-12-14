@@ -11,11 +11,6 @@ type Line struct {
 	end   Point
 }
 
-type Point struct {
-	x int
-	y int
-}
-
 func DayFivePartOne(input []string) int {
 	points := make(map[Point]int)
 	for _, line := range input {
@@ -37,8 +32,8 @@ func DayFivePartOne(input []string) int {
 			end_coords_int = append(end_coords_int, i)
 		}
 
-		vent_line.start = Point{start_coords_int[0], start_coords_int[1]}
-		vent_line.end = Point{end_coords_int[0], end_coords_int[1]}
+		vent_line.start = Point{start_coords_int[0], start_coords_int[1], 0}
+		vent_line.end = Point{end_coords_int[0], end_coords_int[1], 0}
 
 		var xs int
 		var xe int
@@ -57,7 +52,7 @@ func DayFivePartOne(input []string) int {
 			}
 
 			for xs <= xe {
-				points[Point{xs, vent_line.start.y}] += 1
+				points[Point{xs, vent_line.start.y, 0}] += 1
 				xs++
 			}
 		} else if vent_line.start.x == vent_line.end.x {
@@ -72,7 +67,7 @@ func DayFivePartOne(input []string) int {
 
 			// add
 			for ys <= ye {
-				points[Point{vent_line.start.x, ys}] += 1
+				points[Point{vent_line.start.x, ys, 0}] += 1
 				ys++
 			}
 		} else {
@@ -82,28 +77,28 @@ func DayFivePartOne(input []string) int {
 				ys = vent_line.start.y
 
 				for xs := vent_line.start.x; xs <= vent_line.end.x; xs++ {
-					points[Point{xs, ys}] += 1
+					points[Point{xs, ys, 0}] += 1
 					ys++
 				}
 			} else if vent_line.start.x > vent_line.end.x && vent_line.start.y > vent_line.end.y {
 				// desc diagonal to the left
 				ys = vent_line.end.y
 				for xs := vent_line.end.x; xs <= vent_line.start.x; xs++ {
-					points[Point{xs, ys}] += 1
+					points[Point{xs, ys, 0}] += 1
 					ys++
 				}
 			} else if vent_line.start.x < vent_line.end.x && vent_line.start.y > vent_line.end.y {
 				// desc diagonal to the right
 				ys = vent_line.start.y
 				for xs := vent_line.start.x; xs <= vent_line.end.x; xs++ {
-					points[Point{xs, ys}] += 1
+					points[Point{xs, ys, 0}] += 1
 					ys--
 				}
 			} else if vent_line.start.x > vent_line.end.x && vent_line.start.y < vent_line.end.y {
 				// asc diagonal to the left
 				ys = vent_line.end.y
 				for xs := vent_line.end.x; xs <= vent_line.start.x; xs++ {
-					points[Point{xs, ys}] += 1
+					points[Point{xs, ys, 0}] += 1
 					ys--
 				}
 			} else {
