@@ -118,7 +118,7 @@ func main() {
 		fmt.Println("Day 10")
 		fmt.Println(DayTenPartOne(GetInput(sample_input)))
 		fmt.Println(DayTenPartOne(GetInput(real_input)))
-		// fmt.Println(DayTenPartTwo(GetInput(sample_input)))
-		// fmt.Println(DayTenPartTwo(GetInput(real_input)))
+		fmt.Println(DayTenPartTwo(GetInput(sample_input)))
+		fmt.Println(DayTenPartTwo(GetInput(real_input)))
 	}
 }
