@@ -120,5 +120,11 @@ func main() {
 		fmt.Println(DayTenPartOne(GetInput(real_input)))
 		fmt.Println(DayTenPartTwo(GetInput(sample_input)))
 		fmt.Println(DayTenPartTwo(GetInput(real_input)))
+	case "11":
+		fmt.Println("Day 11")
+		fmt.Println(DayElevenPartOne(GetInput(sample_input)))
+		fmt.Println(DayElevenPartOne(GetInput(real_input)))
+		// fmt.Println(DayElevenPartTwo(GetInput(sample_input)))
+		// fmt.Println(DayElevenPartTwo(GetInput(real_input)))
 	}
 }
