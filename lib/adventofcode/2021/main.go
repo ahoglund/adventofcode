@@ -126,5 +126,17 @@ func main() {
 		fmt.Println(DayElevenPartOne(GetInput(real_input)))
 		// fmt.Println(DayElevenPartTwo(GetInput(sample_input)))
 		// fmt.Println(DayElevenPartTwo(GetInput(real_input)))
+	case "12":
+		fmt.Println("Day 12")
+		// fmt.Println(DayTwelvePartOne(GetInput(sample_input)))
+		// fmt.Println(DayTwelvePartOne(GetInput(real_input)))
+		// fmt.Println(DayTwelvePartTwo(GetInput(sample_input)))
+		// fmt.Println(DayTwelvePartTwo(GetInput(real_input)))
+	case "13":
+		fmt.Println("Day 13")
+		fmt.Println(Day13Part1(GetInput(sample_input)))
+		fmt.Println(Day13Part1(GetInput(real_input)))
+		// fmt.Println(DayTwelvePartTwo(GetInput(sample_input)))
+		// fmt.Println(DayTwelvePartTwo(GetInput(real_input)))
 	}
 }
