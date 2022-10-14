@@ -13,6 +13,7 @@ module Adventofcode
   end
 
   class Error < StandardError; end
+
   class Day
     attr_reader :year, :day, :input
     def initialize(year, day, input)

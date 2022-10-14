@@ -3,50 +3,30 @@
 module Adventofcode
   module Year2015
     class Day5 < Adventofcode::Day
-      def part_one
-        vowels = /[aeiou]/
-        #input = raw_input.split("\n")
-        nice = 0
+      def default_input
+        raw_input.split("\n")
+      end
 
-        input.each do |str|
-          binding.pry
+      def part_one
+        input.select do |str|
+          nice = false
           next if str =~ /ab/
           next if str =~ /cd/
           next if str =~ /pq/
           next if str =~ /xy/
+          next unless str.split("").select { |c| c =~ /a|e|i|o|u/ }.join.size >= 3
 
-          tmp_nice = 0
-          chars = str.split("")
-          while chars
-            prev = chars.shift
-            if prev = chars[0]
-              tmp_nice = 1
+          i = 0
+          (1..(str.length - 1)).each do |x|
+            if str[i] == str[x]
+              nice = true
               break
             end
+            i += 1
           end
 
-          if tmp_nice = 1
-            nice += tmp_nice
-            tmp_nice = 0
-            break
-          end
-
-          chars = str.split("")
-          three_vowels = 0
-          while chars
-            char = chars.shift
-            three_vowels += 1 if char =~ vowels
-            if three_vowels == 3
-              tmp_nice = 1
-              break
-            end
-          end
-
-          nice += tmp_nice
-          tmp_nice = 0
-        end
-
-        nice
+          nice
+        end.length
       end
 
       def part_two
