@@ -11,8 +11,11 @@ RSpec.describe Adventofcode do
 
     it "part two" do
       input = %w{ qjhvhtzxzqqjkmpb xxyxx uurcxstgmygtbstg ieodomkazucvgmuy }
-      result = Adventofcode.part_two("2015", "5", input)
-      expect(result).to eq 2
+      # result = Adventofcode.part_two("2015", "5", input)
+      # expect(result).to eq 2
+
+      result = Adventofcode.part_two("2015", "5")
+      expect(result).to eq 100
     end
   end
 end

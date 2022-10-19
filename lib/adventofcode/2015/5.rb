@@ -30,6 +30,32 @@ module Adventofcode
       end
 
       def part_two
+        input.select do |str|
+          detect_pairs(str) && detect_repeats(str)
+        end.length
+      end
+
+      def detect_repeats(str)
+        (0..str.length - 2).each do |i|
+          return true if str[i] == str[i + 2]
+        end
+
+        false
+      end
+
+      def detect_pairs(str)
+        pairs = []
+        (0..str.length - 1).each do |i|
+          pairs << "#{str[i]}#{str[i + 1]}"
+        end
+
+        (0..pairs.length - 2).each do |i|
+          (i + 2..pairs.length - 2).each do |x|
+            return true if pairs[i] == pairs[x]
+          end
+        end
+
+        false
       end
     end
   end
