@@ -41,6 +41,16 @@ module Adventofcode
       end
 
       def part_two
+        instructions = {}
+
+        input.each do |line|
+          parts = line.split(" -> ")
+          instructions[parts.last] = parts.first.split(" ")
+        end
+
+        instructions["b"] = ["3176"]
+
+        process("a", instructions)
       end
     end
   end

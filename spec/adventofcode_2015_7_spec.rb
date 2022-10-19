@@ -6,9 +6,8 @@ RSpec.describe Adventofcode do
     end
 
     it "part two" do
-      input = []
-      result = Adventofcode.part_two("2015", "7", input)
-      expect(result).to eq 0
+      result = Adventofcode.part_two("2015", "7")
+      expect(result).to eq 14710
     end
   end
 end
