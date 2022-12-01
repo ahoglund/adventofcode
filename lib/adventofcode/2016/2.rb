@@ -1,51 +1,40 @@
+require_relative "../helpers"
+require "pry"
+
 # https://adventofcode.com/2016/day/2
+include Helpers
+
 class Advent
   def data
-    @data ||= DATA.each_line.to_a
+    @data ||= DATA.read.split("\n").map(&:chars)
   end
 
   def part_one
-    # if U then subtract
-    # subtract if code > 3
-    #
-    # if D then add 3
-    # add if code is < 7
-    #
-    # if L then subtract 1
-    # dont subtract if 1 and L
-    # dont subtract if 4 and L
-    # dont subtract if 7 and L
-    # if code % 3 != 1 (this only adds when not 1,4,7. 2,5,8 modulo to 2 and 3,6,9 modulo to 0)
-    #
-    # if R then add 1
-    # dont add if 3 and R
-    # dont add if 6 and R
-    # dont add if 9 and R
-    # or
-    # if code % 3 != 0 (this only adds when not 3,6,9)
-    exp = 10_000
-    bath_code = 0
+    grid = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ]
+
+    pos = [1, 1]
+    code = []
     data.each do |line|
-      code = 5
-      line.chars.each do |char|
-        case char
+      line.each do |dir|
+        case dir
         when "U"
-          code -= 3 if code > 3
+          pos[0] -= 1 if pos[0] > 0
         when "D"
-          code += 3 if code < 7
+          pos[0] += 1 if pos[0] < 2
         when "L"
-          code -= 1 if code % 3 != 1
+          pos[1] -= 1 if pos[1] > 0
         when "R"
-          code += 1 if code % 3 != 0
+          pos[1] += 1 if pos[1] < 2
         end
       end
-
-      bath_code += code * exp
-
-      exp /= 10
+      code << grid[pos[0]][pos[1]]
     end
 
-    bath_code
+    code.join
   end
 
   def part_two
@@ -58,57 +47,37 @@ class Advent
     ]
 
     pos = [2, 0]
-    parts = []
-    i = 0
-    code = grid[pos[0]][pos[1]]
+    code = []
     data.each do |line|
-      char_pos = 0
-      line.chomp.chars.each do |char|
-        case char
+      line.each do |dir|
+        case dir
         when "U"
-          require "pry"; binding.pry
-          if next_pos = grid[pos[0] - 1][pos[1]]
-            code = next_pos
-            pos[0] -= 1
-            next
-          end
+          pos[0] -= 1 if pos[0] > 0 && grid[pos[0] - 1][pos[1]]
         when "D"
-          if next_pos = grid[pos[0] + 1][pos[1]]
-            code = next_pos
-            pos[0] += 1
-            next
-          end
+          pos[0] += 1 if pos[0] < 4 && grid[pos[0] + 1][pos[1]]
         when "L"
-          if next_pos = grid[pos[0]][pos[1] - 1]
-            code = next_pos
-            pos[1] -= 1
-            next
-          end
+          pos[1] -= 1 if pos[1] > 0 && grid[pos[0]][pos[1] - 1]
         when "R"
-          if next_pos = grid[pos[0]][pos[1] + 1]
-            code = next_pos
-            pos[1] += 1
-            next
-          end
+          pos[1] += 1 if pos[1] < 4 && grid[pos[0]][pos[1] + 1]
         end
-        char_pos += 1
       end
 
-      parts[i] = code
-      i += 1
+      code << grid[pos[0]][pos[1]]
     end
 
-    parts.join
+    code.join
   end
 end
 
 if $0 == __FILE__
-  # puts Advent.new.part_one
-  puts Advent.new.part_two
+  advent = Advent.new
+  assert_equal advent.part_one, "45973"
+  assert_equal advent.part_two, "27CA4"
 end
 
 __END__
-ULL
-RRDDD
-LURDL
-UUUUD
+UULLULLUULLLURDLDUURRDRRLDURDULLRURDUDULLLUULURURLRDRRRRULDRUULLLLUUDURDULDRRDRUDLRRLDLUDLDDRURURUURRRDDDLLRUDURDULUULLRRULLRULDUDRDRLDLURURUDDUDLURUDUDURLURURRURLUDDRURRDLUURLLRURRDUDLULULUDULDLLRRRDLRDLDUDRDDDRRUURRRRRUURRDRRDLURDRRURDLLUULULLRURDLDDDRRLLRRUURULURUUDDLRRUDDRURUUDLRLRDLRURRRDULLDLRUDDUULRDULURUURDULUDLLRRLDDLRDLRUDRLDDRLRRRDURDULLRRRDRRLUURURDRRDRRLDLUDURURLDUURDRUDRDDRLDRRLDLURURULLUURUDUUDLRLL
+LLLULLULDDULRLLURLLLRUUDDLRUULRLULLDLLRRDRLRLRLLDRUUURULDRDDLUDLLDUDULLLRLULLLRULDRDRUDLLRLRLLUDULRRRLDRUULDDULLDULULLUDUDLDRDURDLDLLDUDRRRDLUURRUURULLURLDURLRRLLDDUUULDRLUUDUDLURLULUDURRDRLLDDDDDRRULLRLDULULDDRUURRDLUDDDUDURDDRDRULULLLLUURDURUUUULUDLRURRULRDDRURURLLRLUUDUUURDLLDDLUDRLLLUDLLLLULRLURDRRRDUUDLLDLDDDURRDDRURUURDDRURRLDDDURDLLUURUUULRLUURRUDRLLDLURDUDRLULDLRLULULUDDLRDUDRUDLUULUULDURDRRRRLRULLUDRDDRDLDUDRDRRLDLLLLUDDLRULDLLDDUULDDRRULRRUURUDRDURLLLDDUUDRUUDLULLDR
+UDUUULLDDDDLUDLDULRLRDLULLDDRULDURRLURRUDLRRUDURRDUDRRRUULRLLRLUDLDRRDUURDDRDRDUUUDUDLDLLRRLUURLUUUDDDUURLULURRLURRRDRDURURUDRLRUURUDRUDDDRDRDLDRDURDLDRRDUUDLLURLDDURRRLULDRDRLLRLLLRURLDURDRLDRUURRLDLDRLDDDRLDLRLDURURLLLLDDRDUDLRULULLRDDLLUDRDRRLUUULDRLDURURDUDURLLDRRDUULDUUDLLDDRUUULRRULDDUDRDRLRULUUDUURULLDLLURLRRLDDDLLDRRDDRLDDLURRUDURULUDLLLDUDDLDLDLRUDUDRDUDDLDDLDULURDDUDRRUUURLDUURULLRLULUURLLLLDUUDURUUDUULULDRULRLRDULDLLURDLRUUUDDURLLLLDUDRLUUDUDRRURURRDRDDRULDLRLURDLLRRDRUUUURLDRURDUUDLDURUDDLRDDDDURRLRLUDRRDDURDDRLDDLLRR
+ULDRUDURUDULLUDUDURLDLLRRULRRULRUDLULLLDRULLDURUULDDURDUUDLRDRUDUDDLDRDLUULRRDLRUULULUUUDUUDDRDRLLULLRRDLRRLUDRLULLUUUUURRDURLLRURRULLLRLURRULRDUURRLDDRRDRLULDDRRDRLULLRDLRRURUDURULRLUDRUDLUDDDUDUDDUDLLRDLLDRURULUDRLRRULRDDDDDRLDLRRLUUDLUURRDURRDLDLDUDRLULLULRLDRDUDLRULLULLRLDDRURLLLRLDDDLLLRURDDDLLUDLDLRLUULLLRULDRRDUDLRRDDULRLLDUURLLLLLDRULDRLLLUURDURRULURLDDLRRUDULUURRLULRDRDDLULULRRURLDLRRRUDURURDURDULURULLRLDD
+DURLRRRDRULDLULUDULUURURRLULUDLURURDDURULLRRUUDLRURLDLRUDULDLLRRULLLLRRLRUULDLDLLRDUDLLRLULRLLUUULULRDLDLRRURLUDDRRLUUDDRRUDDRRURLRRULLDDULLLURRULUDLRRRURRULRLLLRULLRRURDRLURULLDULRLLLULLRLRLLLDRRRRDDDDDDULUUDUDULRURDRUDRLUULURDURLURRDRRRRDRRLLLLUDLRRDURURLLULUDDLRLRLRRUURLLURLDUULLRRDURRULRULURLLLRLUURRULLLURDDDRURDUDDULLRULUUUDDRURUUDUURURRDRURDUDRLLRRULURUDLDURLDLRRRRLLUURRLULDDDUUUURUULDLDRLDUDULDRRULDRDULURRUURDU
