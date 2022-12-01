@@ -1,21 +1,25 @@
+require_relative "../helpers"
+
+include Helpers
+
 class Advent
   def data
     @data ||= DATA.read
   end
 
   def part_one
-    data.split("\n\n").map { |g| g.split("\n").map(&:to_i).sum }.max(1).sum
+    paragraphs(data).map { |g| g.split("\n").map(&:to_i).sum }.max(1).sum
   end
 
   def part_two
-    data.split("\n\n").map { |g| g.split("\n").map(&:to_i).sum }.max(3).sum
+    paragraphs(data).map { |g| g.split("\n").map(&:to_i).sum }.max(3).sum
   end
 end
 
 if $0 == __FILE__
   advent = Advent.new
-  puts advent.part_one
-  puts advent.part_two
+  assert_equal advent.part_one, 66616
+  assert_equal advent.part_two, 199172
 end
 
 __END__
