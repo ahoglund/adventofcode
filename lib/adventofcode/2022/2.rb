@@ -1,7 +1,7 @@
 require_relative "../helpers"
 require "pry"
 
-# https://adventofcode.com/####/day/#
+# https://adventofcode.com/2022/day/2
 include Helpers
 
 class Advent
@@ -19,7 +19,7 @@ class Advent
   # Y = paper
   # Z = scissors
   #
-  # win = 6
+  # win  = 6
   # lose = 0
   # draw = 3
 
