@@ -17,7 +17,7 @@ class Advent
     count = 0
     data.each_slice(3) do |a, b, c|
       [0, 1, 2].each do |i|
-        if a[i] + b[i] > c[i] || a[i] + c[i] > b[i] || b[i] + c[i] > a[i]
+        if a[i] + b[i] > c[i] && a[i] + c[i] > b[i] && b[i] + c[i] > a[i]
           count += 1
         end
       end
@@ -30,7 +30,7 @@ end
 if $0 == __FILE__
   advent = Advent.new
   assert_equal advent.part_one, 993
-  assert_equal advent.part_two, 5678
+  assert_equal advent.part_two, 1849
 end
 
 __END__
